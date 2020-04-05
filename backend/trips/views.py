@@ -1,5 +1,3 @@
-from requests import Response
-from rest_framework.decorators import api_view
 
 from trips.permissions import IsOwnerOrReadOnly, IsLoggedInUserOrAdmin, IsAdminUser
 from .models import Trip

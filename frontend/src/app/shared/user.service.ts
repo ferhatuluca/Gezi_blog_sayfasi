@@ -9,7 +9,7 @@ import { Form } from "@angular/forms";
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  baseurl = "http://127.0.0.1:8000";
+  baseurl = "http://127.0.0.1:8080";
   httpHeaders = new HttpHeaders({ "Content-Type": "application/json" });
   httpHeaders_auth = new HttpHeaders({
     "Content-Type": "application/json",
@@ -27,7 +27,9 @@ export class UserService {
       first_name: user.FirstName,
       last_name: user.LastName,
     };
-    return this.http.post(this.baseurl + "/users/", body);
+    return this.http.post(this.baseurl + "/users/", body, {
+      headers: this.httpHeaders,
+    });
   }
 
   userAuthentication(userName, password) {
