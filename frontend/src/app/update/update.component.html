@@ -1,0 +1,87 @@
+<form
+  class="col s12 white"
+  #tripForm="ngForm"
+  (ngSubmit)="updateTrip(tripForm)"
+>
+  <body>
+    <nav>
+      <div class="class nav-wrapper green accent-3">
+        <a class="brand-logo center" routerLink="/home">
+          <i class="material-icons">update</i>Update</a
+        >
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <a routerLink="/home">HOME</a>
+          </li>
+          <li>
+            <a routerLink="/myTrips">MyTrips</a>
+          </li>
+          <li>
+            <a>Username: {{ username }} </a>
+          </li>
+          <li>
+            <a (click)="Logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main">
+      <div class="sol">
+        <div>
+          <h3>
+            Title : <input type="text" [(ngModel)]="trip.title" name="title" />
+          </h3>
+        </div>
+        <form #imageForm="ngForm">
+          <img [src]="trip.image" style="width: 650px; height: 500px;" />
+          <input
+            type="file"
+            #Image
+            accept="image/*"
+            (change)="handleFileInput($event.target.files)"
+          />
+        </form>
+        <h6>
+          Trip Date :
+          <input type="text" [(ngModel)]="trip.trip_date" name="trip_date" />
+        </h6>
+        <h6>
+          Place : <input type="text" [(ngModel)]="trip.place" name="place" />
+        </h6>
+        <div>
+          <p>
+            Notlar :
+            <input
+              type="text"
+              [(ngModel)]="trip.notes"
+              name="notes"
+              width="48"
+              height="200"
+            />
+          </p>
+        </div>
+      </div>
+
+      <div class="bosluk"></div>
+
+      <div class="sag">
+        <div class="foto">
+          <img
+            src="../../assets/images/user__person__avatar__man-512.png"
+            width="100%"
+          />
+          <h3>
+            User : <input type="text" [(ngModel)]="trip.owner" name="owner" />
+          </h3>
+        </div>
+      </div>
+    </div>
+  </body>
+  <button
+    [disabled]="!tripForm.valid"
+    class="btn-large btn-submit"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>

@@ -1,0 +1,69 @@
+<nav>
+  <div class="class nav-wrapper green accent-3">
+    <a class="brand-logo center" routerLink="/home">
+      <i class="material-icons">create</i>Create</a
+    >
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        <a routerLink="/home">HOME</a>
+      </li>
+      <li>
+        <a routerLink="/myTrips">MyTrips</a>
+      </li>
+      <li>
+        <a>Username: {{ username }} </a>
+      </li>
+      <li>
+        <a (click)="Logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<form #tripForm="ngForm" (ngSubmit)="createTrip(tripForm)">
+  <div class="main">
+    <div class="sol">
+      <div>
+        <h3>Title <input type="text" ngModel name="title" /></h3>
+      </div>
+      <form #imageForm="ngForm">
+        <img [src]="imageUrl" style="width: 650px; height: 500px;" />
+        <input
+          type="file"
+          #Image
+          accept="image/*"
+          (change)="handleFileInput($event.target.files)"
+        />
+      </form>
+      <h6>
+        Trip Date
+        <input type="date" ngModel name="trip_date" />
+      </h6>
+      <h6>Place <input type="text" ngModel name="place" /></h6>
+      <div>
+        <p>
+          Notlar
+          <input type="text" ngModel name="notes" />
+        </p>
+      </div>
+    </div>
+
+    <div class="bosluk"></div>
+
+    <div class="sag">
+      <div class="foto">
+        <img
+          src="../../assets/images/user__person__avatar__man-512.png"
+          width="100%"
+        />
+      </div>
+    </div>
+  </div>
+
+  <button
+    [disabled]="!tripForm.valid"
+    class="btn-large btn-submit"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>

@@ -1,0 +1,36 @@
+<body class="blue lighten-4">
+  <nav>
+    <div class="nav-wrapper green accent-3">
+      <a class="brand-logo center" routerLink="/home">
+        <i class="large material-icons">accessibility</i>MyTrips</a
+      >
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a routerLink="/home">HOME</a>
+        </li>
+        <li>
+          <a>Username: {{ username }}</a>
+        </li>
+        <li>
+          <a (click)="Logout()">Logout</a>
+        </li>
+      </ul>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a routerLink="/create">CREATE</a></li>
+        <li><i class="material-icons">arrow_back</i></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <ul class="collection" *ngFor="let trip of userTrips">
+      <a class="collection-item" [routerLink]="['/detail', trip.id]" active>
+        <div>
+          <h5 class="center-align">{{ trip.title }}</h5>
+          <i class="medium material-icons circle">account_circle</i>
+          User : {{ trip.owner
+          }}<a class="secondary-content"><i class="material-icons">send</i></a>
+        </div>
+      </a>
+    </ul>
+  </div>
+</body>

@@ -1,0 +1,64 @@
+<body>
+  <nav>
+    <div class="class nav-wrapper green accent-3">
+      <a class="brand-logo center" routerLink="/home">
+        <i class="material-icons">pageview</i>Trip</a
+      >
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a routerLink="/home">HOME</a>
+        </li>
+        <li>
+          <a routerLink="/myTrips">MyTrips</a>
+        </li>
+        <li>
+          <a>Username: {{ username }} </a>
+        </li>
+        <li>
+          <a (click)="Logout()">Logout</a>
+        </li>
+      </ul>
+      <ul
+        *ngIf="isUserName()"
+        id="nav-mobile"
+        class="left hide-on-med-and-down"
+      >
+        <li>
+          <a (click)="delete()">DELETE</a>
+        </li>
+        <li><i class="material-icons">arrow_upward</i></li>
+        <li>
+          <a (click)="sendId()">UPDATE</a>
+        </li>
+        <li><i class="material-icons">arrow_upward</i></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="main">
+    <div class="sol">
+      <div>
+        <h3>{{ trip.title }}</h3>
+      </div>
+      <img [src]="image" width="100%" />
+      <h6>Trip Date : {{ trip.trip_date }}</h6>
+      <h6>Place : {{ trip.place }}</h6>
+      <div>
+        <p>
+          {{ trip.notes }}
+        </p>
+      </div>
+    </div>
+
+    <div class="bosluk"></div>
+
+    <div class="sag">
+      <div class="foto">
+        <img
+          src="../../assets/images/user__person__avatar__man-512.png"
+          width="100%"
+        />
+        <h3>User : {{ trip.owner }}</h3>
+      </div>
+    </div>
+  </div>
+</body>
